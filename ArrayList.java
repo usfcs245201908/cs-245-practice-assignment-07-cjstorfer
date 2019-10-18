@@ -17,29 +17,29 @@ public class ArrayList<T> implements List<T>{
 			growArray();
 		array[size++] = item;
 	}
-	public void add(int pos, T item){
+	public void add(int pos, T item) throws IndexOutOfBoundsException{
 		if (pos<0 || pos>size)
-			throw new Exception("Position out of bounds...");
+			throw new IndexOutOfBoundsException("Position out of bounds...");
 		if (size == array.length)
 			growArray();
-		for (int i = size, i>pos-1, i--){
+		for (int i = size; i>pos; i--){
 			array[i] = array[i-1];
 		}
 		array[pos] = item;
 		size++;
 	}
-	public T get(int pos){
+	public T get(int pos) throws IndexOutOfBoundsException{
 		if (pos<0 || pos>size)
-			throw new Exception("Position out of bounds...");
+			throw new IndexOutOfBoundsException("Position out of bounds...");
 		return array[pos];
 	}
-	public T remove(int pos){
+	public T remove(int pos) throws IndexOutOfBoundsException{
 		if (pos<0 || pos>size)
-			throw new Exception("Position out of bounds...");
+			throw new IndexOutOfBoundsException("Position out of bounds...");
 		if (size == 0)
-			throw new Exception("Position out of bounds...");
+			throw new IndexOutOfBoundsException("Position out of bounds...");
 		T temp = array[pos];
-		for (int i = pos, i<size, i++){
+		for (int i = pos; i<size; i++){
 			array[i] = array[i+1];
 		}
 		array[size] = null;
@@ -52,9 +52,5 @@ public class ArrayList<T> implements List<T>{
 	public void growArray(){
 		array = Arrays.copyOf(array, size+1);
 	}
-	public void insertItem(int pos, T item){
-		array = Arrays.copyOfRange(array.)
-	}
-
 
 }
